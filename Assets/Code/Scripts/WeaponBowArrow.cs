@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BowArrow : MonoBehaviour
+public class WeaponBowArrow : MonoBehaviour
 {
     [SerializeField]
-    private double Damage;
+    double Damage = 3;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Start()
+    {
+        Destroy(gameObject, 2);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.TryGetComponent<Status>(out Status status))
         {
             status.TakeDamage(Damage);
+            Debug.Log($"Damage dealt to {collision.gameObject.name}: {Damage}");
         }
         Destroy(gameObject);
     }

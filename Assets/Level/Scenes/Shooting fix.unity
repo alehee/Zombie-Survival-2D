@@ -251,13 +251,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1001262041
+--- !u!1001 &2007191857
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5242307190329811954, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6358303019509735749, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
       propertyPath: m_Name
       value: Player Prototype
