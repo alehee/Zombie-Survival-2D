@@ -26,7 +26,6 @@ public class PlayerShooting : MonoBehaviour
 
         mousePosition = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
 
-
         Vector2 aimDirection = mousePosition - rigidbody.position;
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         rigidbody.rotation = aimAngle;
