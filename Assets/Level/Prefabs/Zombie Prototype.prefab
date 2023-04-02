@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6636740088407850745}
   - component: {fileID: 6636740088407850751}
   - component: {fileID: 6636740088407850750}
-  - component: {fileID: 1598942237}
-  - component: {fileID: 1598942236}
+  - component: {fileID: 4039803140776951694}
+  - component: {fileID: 8100263737244402780}
   m_Layer: 0
   m_Name: Zombie Prototype
   m_TagString: Untagged
@@ -149,8 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1096b00e5e8f1e84d9a74afede20de73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
---- !u!114 &1598942237
+--- !u!114 &4039803140776951694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,10 +158,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6636740088407850746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddc64d5628ee5343aafb097fd68e8a9, type: 3}
+  m_Script: {fileID: 11500000, guid: be1a15fcaf77e9d4eadc9b210086c7c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1598942236
+  Health: 10
+--- !u!114 &8100263737244402780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,8 +171,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6636740088407850746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ead38603406a54ebf1a64ff7b13deb, type: 3}
+  m_Script: {fileID: 11500000, guid: ba121cd5429249a4f82287ef57980bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 3

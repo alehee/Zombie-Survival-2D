@@ -5,18 +5,17 @@ using UnityEngine.AI;
 
 public class ZombieMovement : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     private NavMeshAgent agent;
 
-    // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         agent.SetDestination(target.position);

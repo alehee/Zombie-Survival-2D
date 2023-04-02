@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6358303019509735747}
   - component: {fileID: 6358303019509735746}
   - component: {fileID: 6358303019509735744}
-  - component: {fileID: 4781603733936012801}
+  - component: {fileID: 5169670756082854051}
   m_Layer: 0
   m_Name: Player Prototype
   m_TagString: Player
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!114 &4781603733936012801
+--- !u!114 &5169670756082854051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,9 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6358303019509735749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c081de936f177f49818ccbf503e2824, type: 3}
+  m_Script: {fileID: 11500000, guid: c3d4c5ebf614b1648b3e5bbcae37e5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
 --- !u!1 &6358303020432107252
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +260,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150457479705238215, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
       propertyPath: m_Name
+      value: Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150457479705238215, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
+      propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
     - target: {fileID: 1224223140596820221, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
@@ -271,11 +276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1224223140596820221, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1224223140596820221, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1224223140596820221, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
       propertyPath: m_LocalRotation.w
@@ -305,7 +310,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5947528434650417786, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
+      propertyPath: m_Name
+      value: Fire Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947528434660583811, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 8679334694800404746, guid: 03785aceccbc4b24ea866acbfd5c4668, type: 3}
+    m_RemovedComponents:
+    - {fileID: 641053194, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
 --- !u!4 &5242307190329811954 stripped
 Transform:
