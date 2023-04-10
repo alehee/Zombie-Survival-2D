@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody2D rigidbody;
+    [SerializeField]
+    float speed;
+    Rigidbody2D rigidbody;
+    PlayerStatus status;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        status = GetComponent<PlayerStatus>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         rigidbody.velocity = new Vector2(moveHorizontal*speed, moveVertical*speed);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Pickupable"))
+        {
+            switch (collider.gameObject.name)
+            {
+                case "Stick":
+                    status.AddStick();
+                    break;
+            }
+
+            Destroy(collider.gameObject);
+        }
     }
 }
