@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6358303019509735746}
   - component: {fileID: 6358303019509735744}
   - component: {fileID: 5169670756082854051}
+  - component: {fileID: 1396658450795311625}
   m_Layer: 0
   m_Name: Player Prototype
   m_TagString: Player
@@ -163,6 +164,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 10
+--- !u!114 &1396658450795311625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6358303019509735749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91abca134dce17a49b987a76f9be99ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingPrefab: {fileID: 6498682629139795958, guid: e9c5d1dc563323640a776e1e599bf6c9, type: 3}
+  buildingDistance: 2
 --- !u!1 &6358303020432107252
 GameObject:
   m_ObjectHideFlags: 0

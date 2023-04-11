@@ -220,7 +220,7 @@ Transform:
   - {fileID: 1582690064}
   - {fileID: 961046447}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &448338166
 MonoBehaviour:
@@ -650,7 +650,7 @@ Transform:
   - {fileID: 84913618}
   - {fileID: 789554437}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582690063
 GameObject:
@@ -938,7 +938,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2059106718
 MonoBehaviour:
@@ -953,8 +953,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZombieStandard: {fileID: 6636740088407850746, guid: 92ee24366078a6947a24b338811fadc9, type: 3}
-  WaveDelay: 15
+  WaveDelay: 10
   WaveZombiesMultiplyer: 1.2
+  StickPrefab: {fileID: 3792505038530083843, guid: ab1efc37a6786e4488232db2bb8b2d77, type: 3}
+  PickupableNums: 10
 --- !u!1001 &6358303021038567174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -972,7 +974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6358303020597243059, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6358303020597243059, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
       propertyPath: m_LocalPosition.x

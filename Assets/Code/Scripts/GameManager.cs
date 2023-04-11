@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     int WaveNumber = 0;
     int WaveLastStarted = 0;
 
+    [SerializeField]
+    GameObject StickPrefab;
+    [SerializeField]
+    int PickupableNums = 10;
+    Vector2 SpawnBounds = new Vector2(10, 10);
+
     GameObject[] SpawnPoints;
 
     int SecondsElapsed = 0;
@@ -22,7 +28,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-        RespawnZombies();
+        GenerateSticks();
+        GenerateWave();
     }
 
     void Update()
@@ -36,16 +43,23 @@ public class GameManager : MonoBehaviour
 
             if(WaveLastStarted + WaveDelay <= SecondsElapsed)
             {
-                RespawnZombies();
+                GenerateWave();
             }
         }
     }
 
-    void RespawnZombies()
+    void GenerateWave()
     {
         WaveNumber++;
         WaveLastStarted = SecondsElapsed;
 
+        RespawnZombies();
+
+        Debug.Log($"Started wave number {WaveNumber}");
+    }
+
+    void RespawnZombies()
+    {
         int zombiesCount = (int)(WaveNumber * WaveZombiesMultiplyer);
         for (int i = 0; i < zombiesCount; i++)
         {
@@ -54,7 +68,22 @@ public class GameManager : MonoBehaviour
             zombieSpawnTransform.position += new Vector3(i/10, i/10);
             Instantiate(ZombieStandard, zombieSpawnTransform);
         }
+    }
 
-        Debug.Log($"Started wave number {WaveNumber}");
+    void GenerateSticks()
+    {
+        for (int i = 0; i < PickupableNums; i++)
+        {
+            // Losowo wybierz prefab do wygenerowania
+            GameObject objectPrefab = StickPrefab;
+
+            // Losowo wygeneruj pozycjê w obrêbie granic spawnu
+            float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
+            float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
+            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+
+            // Wygeneruj obiekt
+            Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 }
