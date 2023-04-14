@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceBuilding : MonoBehaviour
+public class PlayerBuilding : MonoBehaviour
 {
-    public GameObject buildingPrefab;
-    public Transform playerTransform;
-    public KeyCode placeBuildingKey = KeyCode.T;
+    [SerializeField]
+    GameObject buildingPrefab;
+    [SerializeField]
+    float buildingDistance = 2.0f;
+    Transform playerTransform;
+    KeyCode placeBuildingKey = KeyCode.T;
+
+    void Start()
+    {
+        playerTransform = gameObject.transform;    
+    }
 
     void Update()
     {
-        // Sprawdź, czy gracz nacisnął przycisk "T"
         if (Input.GetKeyDown(placeBuildingKey))
         {
-            // Oblicz odległość przed graczem, w której ma zostać postawiony obiekt
-            float distance = 2.0f;
-
             // Oblicz pozycję, w której ma zostać postawiony obiekt
-            Vector3 spawnPosition = playerTransform.position + playerTransform.forward * distance;
+            Vector3 spawnPosition = playerTransform.position + playerTransform.forward * buildingDistance;
+            spawnPosition.z = 0;
 
             // Stwórz obiekt "building" w pozycji spawnPosition
-            spawnPosition.z = 0;
             GameObject building = Instantiate(buildingPrefab, spawnPosition, Quaternion.identity);
 
             // Ustaw rotację obiektu "building" zgodnie z rotacją gracza

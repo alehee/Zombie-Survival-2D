@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 8679334694800404746, guid: 03785aceccbc4b24ea866acbfd5c4668, type: 3}
   firePoint: {fileID: 5947528434650417787}
-  fireForce: 5
+  fireForce: 15
 --- !u!1 &3625277557017840368
 GameObject:
   m_ObjectHideFlags: 0
