@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int PickupableNums = 10;
     Vector2 SpawnBounds = new Vector2(10, 10);
-
     GameObject[] SpawnPoints;
 
     int SecondsElapsed = 0;
@@ -77,7 +76,7 @@ public class GameManager : MonoBehaviour
             // Losowo wybierz prefab do wygenerowania
             GameObject objectPrefab = StickPrefab;
 
-            // Losowo wygeneruj pozycjê w obrêbie granic spawnu
+            // Losowo wygeneruj pozycjï¿½ w obrï¿½bie granic spawnu
             float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
             float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
             Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
