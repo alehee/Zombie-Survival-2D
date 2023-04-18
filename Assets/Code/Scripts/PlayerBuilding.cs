@@ -29,6 +29,7 @@ public class PlayerBuilding : MonoBehaviour
 
             // Ustaw rotację obiektu "building" zgodnie z rotacją gracza
             building.transform.rotation = playerTransform.rotation;
+            Debug.Log($"Building successfully placed!");
         }
     }
 }
