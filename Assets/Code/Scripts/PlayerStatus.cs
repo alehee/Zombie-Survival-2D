@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerStatus : Status
 {
+
+    [SerializeField]
+    GameObject SticksCounter;
+    [SerializeField]
+    TextMeshPro SticksAmount;
+
     Dictionary<string, int> Resources;
 
     public int Sticks { get { return Resources["Sticks"]; } }
@@ -17,10 +23,13 @@ public class PlayerStatus : Status
     {
         Resources["Sticks"]++;
         Debug.Log($"Gathered a stick! In eq: {Resources["Sticks"]}");
+        int SticksCount = Resources["Sticks"];
+        SticksAmount.text = SticksCount.ToString();
     }
 
     public void SetSticks(int sticks)
     {
         Resources["Sticks"] = sticks;
     }
+    
 }
