@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         {
             switch (collider.gameObject.name)
             {
-                case "Stick":
+                case "Stick(Clone)":
                     status.AddStick();
                     break;
             }
