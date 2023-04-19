@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - Weapon
   - Pickupable
+  - Exp
+  - Coin
   layers:
   - Default
   - TransparentFX
