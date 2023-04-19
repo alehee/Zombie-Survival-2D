@@ -31,7 +31,7 @@ public class PlayerBuilding : MonoBehaviour
 
             // Stwórz obiekt "building" w pozycji spawnPosition
             GameObject building = Instantiate(buildingPrefab, spawnPosition, Quaternion.identity);
-
+            status.UpdateSticksCounter();
             // Ustaw rotację obiektu "building" zgodnie z rotacją gracza
             building.transform.rotation = playerTransform.rotation;
             Debug.Log($"Building successfully placed!");

@@ -23,8 +23,7 @@ public class PlayerStatus : Status
     {
         Resources["Sticks"]++;
         Debug.Log($"Gathered a stick! In eq: {Resources["Sticks"]}");
-        int SticksCount = Resources["Sticks"];
-        SticksAmount.text = SticksCount.ToString();
+        UpdateSticksCounter();
     }
 
     public void SetSticks(int sticks)
@@ -35,6 +34,13 @@ public class PlayerStatus : Status
     public int GetSticks()
     {
         return Sticks;
+    }
+
+    public void UpdateSticksCounter()
+    {
+        int SticksCount = Resources["Sticks"];
+        SticksAmount.text = SticksCount.ToString();
+        Debug.Log($"StickCounter Updated! In eq: {Resources["Sticks"]}");
     }
     
 }
