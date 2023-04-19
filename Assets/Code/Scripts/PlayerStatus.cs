@@ -12,7 +12,7 @@ public class PlayerStatus : Status
 
     Dictionary<string, int> Resources;
 
-    public int Sticks { get { return Resources["Sticks"]; } }
+    private int Sticks { get { return Resources["Sticks"]; } }
 
     void Start()
     {
@@ -30,6 +30,11 @@ public class PlayerStatus : Status
     public void SetSticks(int sticks)
     {
         Resources["Sticks"] = sticks;
+    }
+
+    public int GetSticks()
+    {
+        return Sticks;
     }
     
 }
