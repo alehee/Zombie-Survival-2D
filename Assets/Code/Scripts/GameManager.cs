@@ -21,8 +21,12 @@ public class GameManager : MonoBehaviour
     Vector2 SpawnBounds = new Vector2(10, 10);
     GameObject[] SpawnPoints;
 
+<<<<<<< HEAD
 
     public int SecondsElapsed { get; private set; } = 0;
+=======
+    int SecondsElapsed = 0;
+>>>>>>> 01470450649ada7e03cbdabf16fd673f55ebb4b7
     float Tick = 0;
 
     void Start()
@@ -32,7 +36,10 @@ public class GameManager : MonoBehaviour
         GenerateWave();
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01470450649ada7e03cbdabf16fd673f55ebb4b7
     void Update()
     {
         Tick += Time.deltaTime;
