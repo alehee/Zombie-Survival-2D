@@ -13,6 +13,7 @@ public class Status : MonoBehaviour
 
         if(Health <= 0)
         {
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
             Destroy(gameObject);
             Debug.Log($"Object {gameObject.name} destroyed due to health below 0");
         }
