@@ -22,16 +22,16 @@ public class PlayerBuilding : MonoBehaviour
     {
         if (Input.GetKeyDown(placeBuildingKey))
         {
-            if (status.Sticks >= 1)
+            if (status.GetSticks() >= 1)
             {
-                status.SetSticks(status.Sticks - 1);
+                status.SetSticks(status.GetSticks() - 1);
             // Oblicz pozycję, w której ma zostać postawiony obiekt
             Vector3 spawnPosition = playerTransform.position + playerTransform.forward * buildingDistance;
             spawnPosition.z = 0;
 
             // Stwórz obiekt "building" w pozycji spawnPosition
             GameObject building = Instantiate(buildingPrefab, spawnPosition, Quaternion.identity);
-
+            status.UpdateSticksCounter();
             // Ustaw rotację obiektu "building" zgodnie z rotacją gracza
             building.transform.rotation = playerTransform.rotation;
             Debug.Log($"Building successfully placed!");

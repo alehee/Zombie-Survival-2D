@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     int PickupableNums = 10;
     Vector2 SpawnBounds = new Vector2(10, 10);
     GameObject[] SpawnPoints;
+    [SerializeField]
+    GameObject Timer;
+    [SerializeField]
+    TextMeshPro TimerAmount;
 
 
     public int SecondsElapsed { get; private set; } = 0;
@@ -39,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             Tick = 0;
             SecondsElapsed += 1;
+            TimerAmount.text = SecondsElapsed.ToString();
             Debug.Log($"Timer elapsed: {SecondsElapsed}");
 
             if(WaveLastStarted + WaveDelay <= SecondsElapsed)
@@ -85,5 +90,6 @@ public class GameManager : MonoBehaviour
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
         }
+
     }
 }
