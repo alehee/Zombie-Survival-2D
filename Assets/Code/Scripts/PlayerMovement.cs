@@ -24,17 +24,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider)
+{
+    if (collider.gameObject.CompareTag("Pickupable"))
     {
-        if (collider.gameObject.CompareTag("Pickupable"))
+        switch (collider.gameObject.name)
         {
-            switch (collider.gameObject.name)
-            {
-                case "Stick(Clone)":
-                    status.AddStick();
-                    break;
-            }
-
-            Destroy(collider.gameObject);
+            case "Stick(Clone)":
+                status.AddStick();
+                break;
         }
+        Destroy(collider.gameObject);
     }
+    if (collider.gameObject.CompareTag("Exp"))
+    {
+        status.AddExp();
+        Destroy(collider.gameObject);
+    }
+    if (collider.gameObject.CompareTag("Coin"))
+    {
+        status.AddCoin();
+        Destroy(collider.gameObject);
+    }
+}
 }

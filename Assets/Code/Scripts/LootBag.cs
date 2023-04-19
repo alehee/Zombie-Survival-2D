@@ -38,12 +38,9 @@ public class LootBag : MonoBehaviour
                 GameObject lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
                 lootGameObject.GetComponent<SpriteRenderer>().sprite = item.lootSprite;
 
-                //można to odkomentować i loot będzie poruszał się w którąś stronę,
-                //problem w tym że ciągle się porusza i nie chce się zatrzymać po czasie
-
-                // float dropForce = 15f;
-                // Vector2 dropDirection = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
-                // lootGameObject.GetComponent<Rigidbody2D>().AddForce(dropDirection * dropForce, ForceMode2D.Impulse);
+                float dropForce = 5f;
+                Vector2 dropDirection = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f));
+                lootGameObject.GetComponent<Rigidbody2D>().AddForce(dropDirection * dropForce, ForceMode2D.Impulse);
 
                 if (item.lootName == "Exp") 
                 {
