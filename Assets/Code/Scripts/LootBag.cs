@@ -11,7 +11,7 @@ public class LootBag : MonoBehaviour
 
     List<Loot> GetDroppedItems()
     {
-        int randomNumber = Random.Range(1,101); // 1-100
+        float randomNumber = Random.Range(0f,1f); // 0-1f
         List<Loot> possibleItems = new List<Loot>();
         foreach (Loot item in lootList)
         {
