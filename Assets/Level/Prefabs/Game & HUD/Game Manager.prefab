@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8195970104389547518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8195970104389547519}
+  - component: {fileID: 8195970104389547516}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8195970104389547519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195970104389547518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8195970104389547516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8195970104389547518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c094dcaa7caa8b4cb03f8ec9294ea1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZombieNormal: {fileID: 6636740088407850746, guid: 92ee24366078a6947a24b338811fadc9, type: 3}
+  WaveDelay: 10
+  WaveZombiesMultiplyer: 1.2
+  StickPrefab: {fileID: 3792505038530083843, guid: ab1efc37a6786e4488232db2bb8b2d77, type: 3}
+  StonePrefab: {fileID: 2591680665395659052, guid: 7ec5ad78cc943bd48b6d27bcc0e8eafb, type: 3}
+  ApplePrefab: {fileID: 9175527796426865659, guid: 60250c2c5c92f814bb22886698ef0870, type: 3}
+  PickupableNums: 10
+  Timer: {fileID: 0}
+  TimerAmount: {fileID: 0}
