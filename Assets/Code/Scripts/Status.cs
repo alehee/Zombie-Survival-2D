@@ -6,6 +6,7 @@ public class Status : MonoBehaviour
 {
     [SerializeField]
     double Health = 10.0;
+    protected double MaxHealth;
 
     public void TakeDamage(double damage)
     {
@@ -22,8 +23,17 @@ public class Status : MonoBehaviour
         }
     }
 
+    public double GetHealth()
+    {
+        return Health;
+    }
+
     public void GainHealth(double health)
     {
-        Health += health;
+        if((Health + health) <= MaxHealth)
+        {
+            Health += health;
+            Debug.Log($"Gained {health} health");
+        }
     }
 }

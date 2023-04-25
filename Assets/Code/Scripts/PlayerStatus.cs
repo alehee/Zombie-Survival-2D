@@ -12,6 +12,7 @@ public class PlayerStatus : Status
     TextMeshPro SticksAmount;
 
     Dictionary<string, int> Resources;
+
     int Level = 1;
     [SerializeField]
     int NextLevelExperienceMultiplyer = 5;
@@ -22,6 +23,7 @@ public class PlayerStatus : Status
     {
         Resources = new Dictionary<string, int> { { "Sticks", 0 }, { "Stones", 0 }, { "Coins", 0 }, { "Exp", 0 } };
         PlayerMovement = gameObject.GetComponent<PlayerMovement>();
+        MaxHealth = GetHealth();
     }
 
     #region Gathering
@@ -31,7 +33,14 @@ public class PlayerStatus : Status
         Debug.Log($"Gathered a stick! In eq: {Resources["Sticks"]}");
         UpdateSticksCounter();
     }
-    
+
+    public void AddStone()
+    {
+        Resources["Stones"]++;
+        Debug.Log($"Gathered a stone! In eq: {Resources["Stones"]}");
+        UpdateSticksCounter();
+    }
+
     public void AddCoin()
     {
         Resources["Coins"]++;
@@ -73,6 +82,7 @@ public class PlayerStatus : Status
         Resources["Exp"] = 0;
         Level++;
         PlayerMovement.speed += 0.1f;
+        MaxHealth += 2;
         GainHealth(2);
     }
     #endregion

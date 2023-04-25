@@ -8,16 +8,30 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rigidbody;
     PlayerStatus status;
 
+    [SerializeField]
+    GameObject PlayerModel;
+    Animator PlayerAnimator;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         status = GetComponent<PlayerStatus>();
+        PlayerAnimator = PlayerModel.GetComponent<Animator>();
     }
 
     void Update()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+
+        if (moveHorizontal != 0 || moveVertical != 0)
+        {
+            PlayerAnimator.speed = 1;
+        }
+        else
+        {
+            PlayerAnimator.speed = 0;
+        }
 
         rigidbody.velocity = new Vector2(moveHorizontal*speed, moveVertical*speed);
     }
@@ -30,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 case "Stick(Clone)":
                     status.AddStick();
+                    break;
+                case "Stone(Clone)":
+                    status.AddStone();
+                    break;
+                case "Apple(Clone)":
+                    status.GainHealth(1);
                     break;
             }
             Destroy(collider.gameObject);

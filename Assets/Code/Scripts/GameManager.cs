@@ -5,7 +5,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject ZombieStandard;
+    GameObject ZombieNormal;
 
     [SerializeField]
     int WaveDelay = 10; // seconds
@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject StickPrefab;
+    [SerializeField]
+    GameObject StonePrefab;
+    [SerializeField]
+    GameObject ApplePrefab;
     [SerializeField]
     int PickupableNums = 10;
     Vector2 SpawnBounds = new Vector2(10, 10);
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour
     {
         SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
         GenerateSticks();
+        GenerateStones();
+        GenerateApples();
         GenerateWave();
     }
 
@@ -71,7 +77,7 @@ public class GameManager : MonoBehaviour
             int spawnPointNb = Random.Range(0, SpawnPoints.Length);
             Transform zombieSpawnTransform = SpawnPoints[spawnPointNb].transform;
             zombieSpawnTransform.position += new Vector3(i/10, i/10);
-            Instantiate(ZombieStandard, zombieSpawnTransform);
+            Instantiate(ZombieNormal, zombieSpawnTransform);
         }
     }
 
@@ -90,6 +96,39 @@ public class GameManager : MonoBehaviour
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
         }
+    }
 
+    void GenerateStones()
+    {
+        for (int i = 0; i < PickupableNums; i++)
+        {
+            // Losowo wybierz prefab do wygenerowania
+            GameObject objectPrefab = StonePrefab;
+
+            // Losowo wygeneruj pozycj� w obr�bie granic spawnu
+            float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
+            float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
+            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+
+            // Wygeneruj obiekt
+            Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
+        }
+    }
+
+    void GenerateApples()
+    {
+        for (int i = 0; i < PickupableNums; i++)
+        {
+            // Losowo wybierz prefab do wygenerowania
+            GameObject objectPrefab = ApplePrefab;
+
+            // Losowo wygeneruj pozycj� w obr�bie granic spawnu
+            float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
+            float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
+            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+
+            // Wygeneruj obiekt
+            Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 }
