@@ -9,26 +9,59 @@ public class WeaponBow : Weapon
     [SerializeField]
     Transform firePoint;
     [SerializeField]
+    List<Transform> firePointsUlt;
+    [SerializeField]
     float fireForce;
+
+    float drawTime = 0;
 
     void Start()
     {
         Weapon.Start();
         weaponGameObject = gameObject;
+        
+        // Testing purposes only
+        _LevelMax();
     }
 
     void Update()
     {
         Weapon.Update();
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(1))
         {
-            Shoot();
+            if (UseUltimate())
+            {
+                Ultimate();
+            }
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            drawTime += Time.deltaTime;
+        }
+        else if (drawTime > 0)
+        {
+            if (drawTime > 1)
+                drawTime = 1;
+
+            Shoot(fireForce * drawTime, firePoint);
+
+            drawTime = 0;
         }
     }
 
-    public void Shoot()
+    protected override void Ultimate()
     {
-        GameObject projectile = Instantiate(arrow, firePoint.position, firePoint.rotation);
-        projectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
-    } 
+        Shoot(fireForce, firePoint);
+        Shoot(fireForce, firePointsUlt[0]);
+        Shoot(fireForce, firePointsUlt[1]);
+        Debug.Log("Used ultimate!");
+    }
+
+    public void Shoot(float force, Transform fp)
+    {
+        GameObject projectile = Instantiate(arrow, fp.position, fp.rotation);
+        projectile.GetComponent<Rigidbody2D>().AddForce(fp.up * force, ForceMode2D.Impulse);
+        Debug.Log($"Arrow fired with force {force}");
+    }
 }
