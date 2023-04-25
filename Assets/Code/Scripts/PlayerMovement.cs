@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    float speed;
+    public float speed;
     Rigidbody2D rigidbody;
     PlayerStatus status;
 
@@ -24,26 +23,26 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider)
-{
-    if (collider.gameObject.CompareTag("Pickupable"))
     {
-        switch (collider.gameObject.name)
+        if (collider.gameObject.CompareTag("Pickupable"))
         {
-            case "Stick(Clone)":
-                status.AddStick();
-                break;
+            switch (collider.gameObject.name)
+            {
+                case "Stick(Clone)":
+                    status.AddStick();
+                    break;
+            }
+            Destroy(collider.gameObject);
         }
-        Destroy(collider.gameObject);
+        if (collider.gameObject.CompareTag("Exp"))
+        {
+            status.AddExp();
+            Destroy(collider.gameObject);
+        }
+        if (collider.gameObject.CompareTag("Coin"))
+        {
+            status.AddCoin();
+            Destroy(collider.gameObject);
+        }
     }
-    if (collider.gameObject.CompareTag("Exp"))
-    {
-        status.AddExp();
-        Destroy(collider.gameObject);
-    }
-    if (collider.gameObject.CompareTag("Coin"))
-    {
-        status.AddCoin();
-        Destroy(collider.gameObject);
-    }
-}
 }

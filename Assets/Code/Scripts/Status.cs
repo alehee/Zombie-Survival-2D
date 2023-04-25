@@ -21,4 +21,9 @@ public class Status : MonoBehaviour
             Debug.Log($"Object {gameObject.name} destroyed due to health below 0");
         }
     }
+
+    public void GainHealth(double health)
+    {
+        Health += health;
+    }
 }
