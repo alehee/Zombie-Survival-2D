@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 988634021345117849}
   - component: {fileID: 7166525698648396280}
   - component: {fileID: 7543415150927224902}
+  - component: {fileID: -8320179437900656063}
   m_Layer: 0
   m_Name: two_trees_tree_stumps 1
   m_TagString: Wall
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3065218129096621950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,3 +102,19 @@ CircleCollider2D:
   m_Offset: {x: -0.012448979, y: -0.1474725}
   serializedVersion: 2
   m_Radius: 0.33835185
+--- !u!114 &-8320179437900656063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065218129096621950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
