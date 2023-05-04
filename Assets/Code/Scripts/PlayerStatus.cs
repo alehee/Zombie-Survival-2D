@@ -6,8 +6,7 @@ public class PlayerStatus : Status
 {
     PlayerMovement PlayerMovement;
 
-    [SerializeField]
-    GameObject SticksCounter;
+    
     [SerializeField]
     TextMeshPro SticksAmount;
 
