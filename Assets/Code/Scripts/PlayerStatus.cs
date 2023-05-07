@@ -17,6 +17,7 @@ public class PlayerStatus : Status
     int NextLevelExperienceMultiplyer = 5;
 
     private int Sticks { get { return Resources["Sticks"]; } }
+    private int Stones { get { return Resources["Stones"]; } }
 
     GameManager GameManager;
 
@@ -73,6 +74,16 @@ public class PlayerStatus : Status
     public int GetSticks()
     {
         return Sticks;
+    }
+
+    public void SetStones(int stones)
+    {
+        Resources["Stones"] = stones;
+    }
+
+    public int GetStones()
+    {
+        return Stones;
     }
 
     public void UpdateSticksCounter()

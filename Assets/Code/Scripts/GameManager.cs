@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     GameObject ApplePrefab;
     [SerializeField]
     int PickupableNums = 10;
-    Vector2 SpawnBounds = new Vector2(70, 70);
+    Vector2 SpawnBounds = new Vector2(10, 10);
     GameObject[] SpawnPoints;
     [SerializeField]
     TextMeshPro TimerAmount;
