@@ -53,3 +53,4 @@ MonoBehaviour:
   PickupableNums: 10
   Timer: {fileID: 0}
   TimerAmount: {fileID: 0}
+  GameOverCamera: {fileID: 0}

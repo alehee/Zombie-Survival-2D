@@ -145,5 +145,7 @@ public class GameManager : MonoBehaviour
         ui.transform.Find("Subtext").gameObject.GetComponent<Text>().text = $"LEVEL {level}, COINS {coins}, EXPERIENCE {experience}";
 
         GameOverCamera.SetActive(true);
+
+        SaveManager.Save(coins);
     }
 }
