@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshPro TimerAmount;
 
+    [SerializeField]
+    GameObject GameOverCamera;
 
     public int SecondsElapsed { get; private set; } = 0;
     float Tick = 0;
@@ -130,5 +133,17 @@ public class GameManager : MonoBehaviour
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
         }
+    }
+
+    public void SetGameOver(Transform position, int coins, int experience, int level)
+    {
+        GameOverCamera.transform.position = position.position;
+
+        Debug.Log($"Game Over! Resources at the end: {coins} coins, {experience} experience, {level} level");
+
+        GameObject ui = GameOverCamera.transform.Find("Canvas").gameObject;
+        ui.transform.Find("Subtext").gameObject.GetComponent<Text>().text = $"LEVEL {level}, COINS {coins}, EXPERIENCE {experience}";
+
+        GameOverCamera.SetActive(true);
     }
 }
