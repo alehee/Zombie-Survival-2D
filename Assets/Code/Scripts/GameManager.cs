@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
     Vector2 SpawnBounds = new Vector2(10, 10);
     GameObject[] SpawnPoints;
     [SerializeField]
-    GameObject Timer;
-    [SerializeField]
     TextMeshPro TimerAmount;
 
     [SerializeField]
