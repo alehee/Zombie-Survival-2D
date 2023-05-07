@@ -4478,6 +4478,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1396658450795311625, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
+      propertyPath: wallPrefab
+      value: 
+      objectReference: {fileID: 6498682629139795958, guid: e9c5d1dc563323640a776e1e599bf6c9, type: 3}
+    - target: {fileID: 1396658450795311625, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
+      propertyPath: towerPrefab
+      value: 
+      objectReference: {fileID: 8808454528978496364, guid: 4b2aa6ffbac655d4985629233df6389f, type: 3}
+    - target: {fileID: 1396658450795311625, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
+      propertyPath: lowerWallPrefab
+      value: 
+      objectReference: {fileID: 2226848635473377715, guid: 651b3b1620ffede46a4ef860006e2f39, type: 3}
     - target: {fileID: 6358303019509735749, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
       propertyPath: m_Name
       value: Player
