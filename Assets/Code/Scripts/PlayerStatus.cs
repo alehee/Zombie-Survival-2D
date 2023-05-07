@@ -18,11 +18,19 @@ public class PlayerStatus : Status
 
     private int Sticks { get { return Resources["Sticks"]; } }
 
+    GameManager GameManager;
+
     void Start()
     {
         Resources = new Dictionary<string, int> { { "Sticks", 0 }, { "Stones", 0 }, { "Coins", 0 }, { "Exp", 0 } };
         PlayerMovement = gameObject.GetComponent<PlayerMovement>();
         MaxHealth = GetHealth();
+        GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.SetGameOver(this.transform, Resources["Coins"], Resources["Exp"], Level);
     }
 
     #region Gathering
