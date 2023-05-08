@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     Vector2 SpawnBounds = new Vector2(10, 10);
     GameObject[] SpawnPoints;
     [SerializeField]
-    TextMeshPro TimerAmount;
+    Text TimerAmount;
 
     [SerializeField]
     GameObject GameOverCamera;
@@ -37,10 +37,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-        GenerateSticks();
-        GenerateStones();
-        GenerateApples();
-        GenerateWave();
+        StartGame();
     }
 
     void Update()
@@ -50,7 +47,7 @@ public class GameManager : MonoBehaviour
         {
             Tick = 0;
             SecondsElapsed += 1;
-            TimerAmount.text = SecondsElapsed.ToString();
+            TimerAmount.text = "Czas: " + SecondsElapsed.ToString();
             Debug.Log($"Timer elapsed: {SecondsElapsed}");
 
             if(WaveLastStarted + WaveDelay <= SecondsElapsed)
@@ -58,6 +55,14 @@ public class GameManager : MonoBehaviour
                 GenerateWave();
             }
         }
+    }
+
+    public void StartGame()
+    {
+        GenerateSticks();
+        GenerateStones();
+        GenerateApples();
+        GenerateWave();
     }
 
     void GenerateWave()

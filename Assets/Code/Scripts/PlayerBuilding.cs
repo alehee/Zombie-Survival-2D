@@ -51,7 +51,7 @@ public class PlayerBuilding : MonoBehaviour
 
         if (Input.GetKeyDown(placeWallKey))
         {
-            if (status.GetSticks() >= 1)
+            if (status.GetSticks() >= 2)
             {
                 status.SetSticks(status.GetSticks() - 2);
 

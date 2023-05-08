@@ -9,8 +9,18 @@ public class BuildingShooting : MonoBehaviour
 
     private float lastFireTime; // czas ostatniego strzału
 
+    public float SecondsToDestroy;
+    float SecondsElapsed = 0;
+
     private void Update()
     {
+        // Jeśli czas minie zniszcz
+        SecondsElapsed += Time.deltaTime;
+        if(SecondsElapsed > SecondsToDestroy)
+        {
+            Destroy(gameObject);
+        }
+
         // szukaj wrogów w zasięgu wieży
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, range);
         foreach (Collider2D hitCollider in hitColliders)
