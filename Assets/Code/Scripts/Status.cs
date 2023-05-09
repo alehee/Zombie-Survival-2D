@@ -30,7 +30,6 @@ public class Status : MonoBehaviour
 
         if(gameObject.tag == "Player")
             UpdateHealthCounter();
-
     }
 
     public double GetHealth()

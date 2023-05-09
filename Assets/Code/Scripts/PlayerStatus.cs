@@ -31,6 +31,7 @@ public class PlayerStatus : Status
     int Level = 1;
     [SerializeField]
     int NextLevelExperienceMultiplyer = 5;
+    int TotalExperience = 0;
 
     private int Sticks { get { return Resources["Sticks"]; } }
     private int Stones { get { return Resources["Stones"]; } }
@@ -55,7 +56,7 @@ public class PlayerStatus : Status
 
     private void OnDestroy()
     {
-        GameManager.SetGameOver(this.transform, Resources["Coins"], Resources["Exp"], Level);
+        GameManager.SetGameOver(this.transform, Resources["Coins"], TotalExperience, Level);
     }
 
     #region Gathering
@@ -83,6 +84,7 @@ public class PlayerStatus : Status
     public void AddExp()
     {
         Resources["Exp"]++;
+        TotalExperience++;
         Debug.Log($"Gathered an exp! In eq: {Resources["Exp"]}");
         UpdateExperienceCounter();
         if (Resources["Exp"] >= (5 + NextLevelExperienceMultiplyer*Level))

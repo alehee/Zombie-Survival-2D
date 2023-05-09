@@ -29,7 +29,21 @@ public class GameManager : MonoBehaviour
     Text TimerAmount;
 
     [SerializeField]
+    GameObject Player;
+
+    [SerializeField]
     GameObject GameOverCamera;
+
+    [SerializeField]
+    GameObject WaveAmmountGameObject;
+    TextMeshProUGUI WaveText;
+
+    [SerializeField]
+    GameObject MenuGameObject;
+
+    [SerializeField]
+    GameObject MenuCoinsAmmountGameObject;
+    Text MenuCoinsText;
 
     public int SecondsElapsed { get; private set; } = 0;
     float Tick = 0;
@@ -37,7 +51,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-        StartGame();
+        Debug.Log($"Found spawn points {SpawnPoints.Length}");
+        WaveText = WaveAmmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        MenuCoinsText = MenuCoinsAmmountGameObject.gameObject.GetComponent<Text>();
+        MenuPrepare();
     }
 
     void Update()
@@ -57,7 +74,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    void MenuPrepare()
+    {
+        var load = SaveManager.Load();
+        MenuCoinsText.text = load.Coins.ToString();
+    }
+
+    public void MenuStartGame()
+    {
+        MenuGameObject.SetActive(false);
+        Player.SetActive(true);
+        StartGame();
+    }
+
+    public void MenuQuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void MenuRestart()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    void StartGame()
     {
         GenerateSticks();
         GenerateStones();
@@ -72,17 +112,19 @@ public class GameManager : MonoBehaviour
 
         RespawnZombies();
 
+        WaveText.SetText($"Fala {WaveNumber}");
         Debug.Log($"Started wave number {WaveNumber}");
     }
 
     void RespawnZombies()
     {
         int zombiesCount = (int)(WaveNumber * WaveZombiesMultiplyer);
+        Debug.Log($"Zombies to generate {zombiesCount}");
         for (int i = 0; i < zombiesCount; i++)
         {
             int spawnPointNb = Random.Range(0, SpawnPoints.Length);
             Transform zombieSpawnTransform = SpawnPoints[spawnPointNb].transform;
-            zombieSpawnTransform.position += new Vector3(i/10, i/10);
+            zombieSpawnTransform.position += new Vector3(i/5, i/5);
             Instantiate(ZombieNormal, zombieSpawnTransform);
         }
     }
@@ -142,13 +184,12 @@ public class GameManager : MonoBehaviour
     {
         GameOverCamera.transform.position = position.position;
 
-        Debug.Log($"Game Over! Resources at the end: {coins} coins, {experience} experience, {level} level");
+        Debug.Log($"Game Over! Resources at the end: {coins} coins, {experience} experience, {level} level, {SecondsElapsed} time");
 
         GameObject ui = GameOverCamera.transform.Find("Canvas").gameObject;
-        ui.transform.Find("Subtext").gameObject.GetComponent<Text>().text = $"LEVEL {level}, COINS {coins}, EXPERIENCE {experience}";
-
-        GameOverCamera.SetActive(true);
+        ui.transform.Find("Subtext").gameObject.GetComponent<Text>().text = $"LEVEL {level}, COINS {coins}, EXPERIENCE {experience}, TIME {SecondsElapsed}";
 
         SaveManager.Save(coins);
+        GameOverCamera.SetActive(true);
     }
 }
