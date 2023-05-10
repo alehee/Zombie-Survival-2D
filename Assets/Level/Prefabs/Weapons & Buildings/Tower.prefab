@@ -469,6 +469,7 @@ MonoBehaviour:
   - {fileID: 1376347797}
   - {fileID: 1427965755}
   - {fileID: 1261071618}
+  SecondsToDestroy: 15
 --- !u!1 &8808454529254875280
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,16 +5,33 @@ using TMPro;
 public class PlayerStatus : Status
 {
     PlayerMovement PlayerMovement;
-
     
     [SerializeField]
-    TextMeshPro SticksAmount;
+    GameObject SticksAmountGameObject;
+    TextMeshProUGUI SticksText;
+
+    [SerializeField]
+    GameObject StonesAmountGameObject;
+    TextMeshProUGUI StonesText;
+
+    [SerializeField]
+    GameObject CoinsAmmountGameObject;
+    TextMeshProUGUI CoinsText;
+
+    [SerializeField]
+    GameObject ExperienceAmmountGameObject;
+    TextMeshProUGUI ExperienceText;
+
+    [SerializeField]
+    GameObject LevelGameObject;
+    TextMeshProUGUI LevelText;
 
     Dictionary<string, int> Resources;
 
     int Level = 1;
     [SerializeField]
     int NextLevelExperienceMultiplyer = 5;
+    int TotalExperience = 0;
 
     private int Sticks { get { return Resources["Sticks"]; } }
     private int Stones { get { return Resources["Stones"]; } }
@@ -27,11 +44,19 @@ public class PlayerStatus : Status
         PlayerMovement = gameObject.GetComponent<PlayerMovement>();
         MaxHealth = GetHealth();
         GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        SticksText = SticksAmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        StonesText = StonesAmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        CoinsText = CoinsAmmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        ExperienceText = ExperienceAmmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        LevelText = LevelGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+        HealthText = HealthGameObject.gameObject.GetComponent<TextMeshProUGUI>();
+
+        UpdateHealthCounter();
     }
 
     private void OnDestroy()
     {
-        GameManager.SetGameOver(this.transform, Resources["Coins"], Resources["Exp"], Level);
+        GameManager.SetGameOver(this.transform, Resources["Coins"], TotalExperience, Level);
     }
 
     #region Gathering
@@ -46,19 +71,22 @@ public class PlayerStatus : Status
     {
         Resources["Stones"]++;
         Debug.Log($"Gathered a stone! In eq: {Resources["Stones"]}");
-        UpdateSticksCounter();
+        UpdateStonesCounter();
     }
 
     public void AddCoin()
     {
         Resources["Coins"]++;
         Debug.Log($"Gathered a coin! In eq: {Resources["Coins"]}");
+        UpdateCoinsCounter();
     }
 
     public void AddExp()
     {
         Resources["Exp"]++;
+        TotalExperience++;
         Debug.Log($"Gathered an exp! In eq: {Resources["Exp"]}");
+        UpdateExperienceCounter();
         if (Resources["Exp"] >= (5 + NextLevelExperienceMultiplyer*Level))
         {
             NextLevel();
@@ -89,8 +117,32 @@ public class PlayerStatus : Status
     public void UpdateSticksCounter()
     {
         int SticksCount = Resources["Sticks"];
-        SticksAmount.text = SticksCount.ToString();
-        Debug.Log($"StickCounter Updated! In eq: {Resources["Sticks"]}");
+        SticksText.SetText(SticksCount.ToString());
+        Debug.Log($"StickCounter Updated! In eq: {SticksCount}");
+    }
+
+    public void UpdateStonesCounter()
+    {
+        int StonesCount = Resources["Stones"];
+        StonesText.SetText(StonesCount.ToString());
+        Debug.Log($"StickCounter Updated! In eq: {StonesCount}");
+    }
+
+    public void UpdateCoinsCounter()
+    {
+        int count = Resources["Coins"];
+        CoinsText.SetText(count.ToString());
+    }
+
+    public void UpdateExperienceCounter()
+    {
+        int count = Resources["Exp"];
+        ExperienceText.SetText(count.ToString());
+    }
+
+    public void UpdateLevelCounter()
+    {
+        LevelText.SetText(Level.ToString());
     }
     #endregion
 
@@ -102,6 +154,7 @@ public class PlayerStatus : Status
         PlayerMovement.speed += 0.1f;
         MaxHealth += 2;
         GainHealth(2);
+        UpdateLevelCounter();
     }
     #endregion
 }

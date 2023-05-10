@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -10,14 +11,17 @@ public class Weapon : MonoBehaviour
     protected static GameObject weaponGameObject;
     protected static int rotationSpeed = 15;
     protected static int level { get; set; } = 1;
+    [SerializeField]
     private static float ultimateRestartTime = 5;
     protected static float ultimateCooldown { get; set; } = ultimateRestartTime;
+    static TextMeshProUGUI ultimateCooldownText { get; set; }
 
     protected static void Start()
     {
         GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
         playerRigidbody = player.GetComponent<Rigidbody2D>();
         playerCamera = GameObject.Find("Player Camera").GetComponent<Camera>();
+        ultimateCooldownText = GameObject.Find("HUD/CD Broni/Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     protected static void Update()
@@ -29,6 +33,7 @@ public class Weapon : MonoBehaviour
             if (ultimateCooldown < 0)
                 ultimateCooldown = 0;
         }
+        ultimateCooldownText.SetText(ultimateCooldown.ToString("0.00"));
     }
 
     private static void RotateWeapon()

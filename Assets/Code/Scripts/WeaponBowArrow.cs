@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WeaponBowArrow : MonoBehaviour
 {
     [SerializeField]
     double Damage = 3;
+
+    string[] tagsToIgnore = new string[] { "Player", "Bullet" };
 
     void Start()
     {
@@ -14,7 +17,7 @@ public class WeaponBowArrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("Player"))
+        if (tagsToIgnore.Contains(collision.gameObject.tag))
         {
             return;
         }
