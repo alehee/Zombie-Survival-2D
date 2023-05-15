@@ -6,12 +6,14 @@ using TMPro;
 public class Status : MonoBehaviour
 {
     [SerializeField]
-    double Health = 10.0;
+    protected double Health = 10.0;
     protected double MaxHealth;
 
     [SerializeField]
     protected GameObject HealthGameObject;
     protected TextMeshProUGUI HealthText;
+
+    protected GameObject ZombieHealthGreenBar;
 
     public void TakeDamage(double damage)
     {
@@ -30,6 +32,9 @@ public class Status : MonoBehaviour
 
         if(gameObject.tag == "Player")
             UpdateHealthCounter();
+
+        if(gameObject.tag == "Enemy")
+            UpdateZombieHealthCounter();
     }
 
     public double GetHealth()
@@ -52,5 +57,14 @@ public class Status : MonoBehaviour
     protected void UpdateHealthCounter()
     {
         HealthText.SetText(Health.ToString());
+    }
+
+    protected void UpdateZombieHealthCounter()
+    {
+        if (!HealthGameObject.active)
+            HealthGameObject.SetActive(true);
+
+        float scale = (float)(Health / MaxHealth);
+        ZombieHealthGreenBar.transform.localScale = new Vector3(scale, 1, 1);
     }
 }
