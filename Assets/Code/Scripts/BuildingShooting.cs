@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class BuildingShooting : MonoBehaviour
 {
@@ -6,11 +7,18 @@ public class BuildingShooting : MonoBehaviour
     public float fireRate = 0.5f; // szybkość strzelania (czas pomiędzy strzałami)
     public GameObject bulletPrefab; // prefabrykat pocisku
     public Transform[] firePoints; // pozycje początkowe pocisku
+    public GameObject timeObject;
 
     private float lastFireTime; // czas ostatniego strzału
 
     public float SecondsToDestroy;
     float SecondsElapsed = 0;
+    TextMeshPro timeText;
+
+    private void Start()
+    {
+        timeText = timeObject.gameObject.GetComponent<TextMeshPro>();
+    }
 
     private void Update()
     {
@@ -20,6 +28,9 @@ public class BuildingShooting : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        // Zaktualizuj timer
+        timeText.SetText((SecondsToDestroy - SecondsElapsed).ToString("0.0"));
 
         // szukaj wrogów w zasięgu wieży
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, range);
