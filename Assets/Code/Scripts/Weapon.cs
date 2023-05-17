@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -43,6 +44,11 @@ public class Weapon : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
         Quaternion rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
         weaponGameObject.transform.rotation = Quaternion.Slerp(weaponGameObject.transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
+
+    protected static Vector3 GetMousePoint()
+    {
+        return playerCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     protected static bool UseUltimate() 
