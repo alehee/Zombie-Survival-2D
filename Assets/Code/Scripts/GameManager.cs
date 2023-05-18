@@ -70,6 +70,9 @@ public class GameManager : MonoBehaviour
             if(WaveLastStarted + WaveDelay <= SecondsElapsed)
             {
                 GenerateWave();
+                GenerateSticks();
+                GenerateStones();
+                GenerateApples();
             }
         }
     }
