@@ -17,7 +17,7 @@ public class WeaponBowArrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (tagsToIgnore.Contains(collision.gameObject.tag))
+        if (tagsToIgnore.Contains(collision.gameObject.tag) || collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Building"))
         {
             return;
         }
