@@ -7,6 +7,8 @@ public class ZombieMovement : MonoBehaviour
 {
     private Transform target;
     private NavMeshAgent agent;
+    SpriteRenderer spriteRenderer;
+    float horizontalMovement;
 
     void Start()
     {
@@ -14,10 +16,19 @@ public class ZombieMovement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        spriteRenderer = gameObject.transform.Find("Model").gameObject.GetComponent<SpriteRenderer>();
+        horizontalMovement = gameObject.transform.position.x;
     }
 
     void Update()
     {
         agent.SetDestination(target.position);
+
+        float newHorizontalMovement = gameObject.transform.position.x;
+        if (newHorizontalMovement > horizontalMovement)
+            spriteRenderer.flipX = false;
+        else
+            spriteRenderer.flipX = true;
+        horizontalMovement = newHorizontalMovement;
     }
 }

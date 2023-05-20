@@ -11,12 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     GameObject PlayerModel;
     Animator PlayerAnimator;
+    SpriteRenderer SpriteRenderer;
+
+    float lastMoveVertical = 0;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         status = GetComponent<PlayerStatus>();
         PlayerAnimator = PlayerModel.GetComponent<Animator>();
+        SpriteRenderer = PlayerModel.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -32,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnimator.speed = 0;
         }
+
+        if (moveHorizontal > lastMoveVertical)
+            SpriteRenderer.flipX = false;
+        else
+            SpriteRenderer.flipX = true;
 
         rigidbody.velocity = new Vector2(moveHorizontal*speed, moveVertical*speed);
     }
