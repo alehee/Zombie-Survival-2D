@@ -15,26 +15,21 @@ public class WeaponBow : Weapon
 
     float drawTime = 0;
 
+    public double Damage = 3;
+
     void Start()
     {
         Weapon.Start();
         weaponGameObject = gameObject;
-        
-        // Testing purposes only
-        _LevelMax();
+        Damage += level * 0.5f;
     }
 
     void Update()
     {
         Weapon.Update();
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (UseUltimate())
-            {
-                Ultimate();
-            }
-        }
+        if (Input.GetMouseButtonDown(1) && UseUltimate())
+            Ultimate();
         else if (Input.GetMouseButton(0))
         {
             drawTime += Time.deltaTime;
@@ -61,6 +56,7 @@ public class WeaponBow : Weapon
     public void Shoot(float force, Transform fp)
     {
         GameObject projectile = Instantiate(arrow, fp.position, fp.rotation);
+        projectile.GetComponent<WeaponBowArrow>().Damage = Damage;
         projectile.GetComponent<Rigidbody2D>().AddForce(fp.up * force, ForceMode2D.Impulse);
         Debug.Log($"Arrow fired with force {force}");
     }

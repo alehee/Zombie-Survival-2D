@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class WeaponBowArrow : MonoBehaviour
 {
-    [SerializeField]
-    double Damage = 3;
+    public double Damage = 3;
 
     string[] tagsToIgnore = new string[] { "Player", "Bullet" };
 

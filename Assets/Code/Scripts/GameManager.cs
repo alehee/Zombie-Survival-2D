@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
     GameObject MenuCoinsAmmountGameObject;
     Text MenuCoinsText;
 
+    private int menuLevelBow, menuLevelSpear;
+    string menuSelectedWeapon = "";
+
     public int SecondsElapsed { get; private set; } = 0;
     float Tick = 0;
 
@@ -81,6 +84,8 @@ public class GameManager : MonoBehaviour
     {
         var load = SaveManager.Load();
         MenuCoinsText.text = load.Coins.ToString();
+        menuLevelBow = load.BowLevel;
+        menuLevelSpear = load.SpearLevel;
     }
 
     public void MenuStartGame()
