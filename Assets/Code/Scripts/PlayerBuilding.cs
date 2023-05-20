@@ -78,7 +78,7 @@ public class PlayerBuilding : MonoBehaviour
                 status.SetSticks(status.GetSticks() - 1);
 
                 Vector3 spawnPosition = playerTransform.position + playerTransform.forward * buildingDistance;
-                spawnPosition.z = 0;
+                spawnPosition.z = -1;
 
                 GameObject lowerWall = Instantiate(lowerWallPrefab, spawnPosition, Quaternion.identity);
                 status.UpdateSticksCounter();
