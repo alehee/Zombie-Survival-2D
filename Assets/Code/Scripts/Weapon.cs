@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour
     public static int level { get; set; } = 1;
     [SerializeField]
     private static float ultimateRestartTime = 5.5f;
-    protected static float ultimateCooldown { get; set; };
+    protected static float ultimateCooldown { get; set; }
     static TextMeshProUGUI ultimateCooldownText { get; set; }
 
     protected static void Start()

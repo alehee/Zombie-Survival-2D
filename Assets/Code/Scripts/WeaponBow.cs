@@ -21,7 +21,6 @@ public class WeaponBow : Weapon
     {
         Weapon.Start();
         weaponGameObject = gameObject;
-        Damage += level * 0.5f;
     }
 
     void Update()
@@ -43,6 +42,11 @@ public class WeaponBow : Weapon
 
             drawTime = 0;
         }
+    }
+
+    public void SetLevel(int l)
+    {
+        level = l;
     }
 
     protected override void Ultimate()
