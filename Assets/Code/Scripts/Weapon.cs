@@ -11,10 +11,10 @@ public class Weapon : MonoBehaviour
     protected static Vector2 mousePosition;
     protected static GameObject weaponGameObject;
     protected static int rotationSpeed = 15;
-    protected static int level { get; set; } = 1;
+    public static int level { get; set; } = 1;
     [SerializeField]
-    private static float ultimateRestartTime = 5;
-    protected static float ultimateCooldown { get; set; } = ultimateRestartTime;
+    private static float ultimateRestartTime = 5.5f;
+    protected static float ultimateCooldown { get; set; }
     static TextMeshProUGUI ultimateCooldownText { get; set; }
 
     protected static void Start()
@@ -23,6 +23,8 @@ public class Weapon : MonoBehaviour
         playerRigidbody = player.GetComponent<Rigidbody2D>();
         playerCamera = GameObject.Find("Player Camera").GetComponent<Camera>();
         ultimateCooldownText = GameObject.Find("HUD/CD Broni/Text (TMP)").gameObject.GetComponent<TextMeshProUGUI>();
+        ultimateRestartTime -= 0.5f * level;
+        ultimateCooldown = ultimateRestartTime;
     }
 
     protected static void Update()
@@ -53,7 +55,7 @@ public class Weapon : MonoBehaviour
 
     protected static bool UseUltimate() 
     {
-        if (level >= 10 && ultimateCooldown <= 0)
+        if (ultimateCooldown <= 0)
         {
             ultimateCooldown = ultimateRestartTime;
             return true;

@@ -8,10 +8,14 @@ public class SaveManager : MonoBehaviour
 {
     const string fileName = "save.json";
 
-    public static void Save(int coins)
+    public static void Save(int coins, int bowLevel = 0, int spearLevel = 0)
     {
         var save = Load();
         save.Coins += coins;
+        if(bowLevel > 0)
+            save.BowLevel = bowLevel;
+        if (spearLevel > 0)
+            save.SpearLevel = spearLevel;
         
         DumpToFile(save);
     }

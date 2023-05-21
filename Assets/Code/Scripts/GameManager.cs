@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -32,6 +34,12 @@ public class GameManager : MonoBehaviour
     GameObject Player;
 
     [SerializeField]
+    GameObject WeaponBow;
+
+    [SerializeField]
+    GameObject WeaponSpear;
+
+    [SerializeField]
     GameObject GameOverCamera;
 
     [SerializeField]
@@ -45,8 +53,31 @@ public class GameManager : MonoBehaviour
     GameObject MenuCoinsAmmountGameObject;
     Text MenuCoinsText;
 
+    [SerializeField]
+    GameObject MenuSelectedWeaponGameObject;
+    Text MenuSelectedWeaponText;
+
+    [SerializeField]
+    GameObject MenuUpgradeButtonTextGameObject;
+    Text MenuUpgradeButtonText;
+
+    [SerializeField]
+    GameObject MenuSelectBowGameObject;
+    Image MenuSelectBowImage;
+
+    [SerializeField]
+    GameObject MenuSelectSpearGameObject;
+    Image MenuSelectSpearImage;
+
+    private int menuLevelBow, menuLevelSpear;
+    string menuSelectedWeapon = "";
+    int menuCoins = 0;
+    int menuNextLevelUpgradeCost = 0;
+
     public int SecondsElapsed { get; private set; } = 0;
     float Tick = 0;
+
+    bool GameStarted = false;
 
     void Start()
     {
@@ -54,25 +85,32 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Found spawn points {SpawnPoints.Length}");
         WaveText = WaveAmmountGameObject.gameObject.GetComponent<TextMeshProUGUI>();
         MenuCoinsText = MenuCoinsAmmountGameObject.gameObject.GetComponent<Text>();
+        MenuSelectedWeaponText = MenuSelectedWeaponGameObject.gameObject.GetComponent<Text>();
+        MenuUpgradeButtonText = MenuUpgradeButtonTextGameObject.gameObject.GetComponent<Text>();
+        MenuSelectBowImage = MenuSelectBowGameObject.gameObject.gameObject.GetComponent<Image>();
+        MenuSelectSpearImage = MenuSelectSpearGameObject.gameObject.GetComponent<Image>();
         MenuPrepare();
     }
 
     void Update()
     {
-        Tick += Time.deltaTime;
-        if (Tick >= 1)
+        if (GameStarted)
         {
-            Tick = 0;
-            SecondsElapsed += 1;
-            TimerAmount.text = "Czas: " + SecondsElapsed.ToString();
-            Debug.Log($"Timer elapsed: {SecondsElapsed}");
-
-            if(WaveLastStarted + WaveDelay <= SecondsElapsed)
+            Tick += Time.deltaTime;
+            if (Tick >= 1)
             {
-                GenerateWave();
-                GenerateSticks();
-                GenerateStones();
-                GenerateApples();
+                Tick = 0;
+                SecondsElapsed += 1;
+                TimerAmount.text = "Czas: " + SecondsElapsed.ToString();
+                Debug.Log($"Timer elapsed: {SecondsElapsed}");
+
+                if (WaveLastStarted + WaveDelay <= SecondsElapsed)
+                {
+                    GenerateWave();
+                    GenerateSticks();
+                    GenerateStones();
+                    GenerateApples();
+                }
             }
         }
     }
@@ -80,14 +118,77 @@ public class GameManager : MonoBehaviour
     void MenuPrepare()
     {
         var load = SaveManager.Load();
-        MenuCoinsText.text = load.Coins.ToString();
+        menuCoins = load.Coins;
+        MenuCoinsText.text = menuCoins.ToString();
+        menuLevelBow = load.BowLevel;
+        menuLevelSpear = load.SpearLevel;
+
+        if (menuSelectedWeapon.StartsWith("BOW"))
+        {
+            menuSelectedWeapon = "BOW, LEVEL " + menuLevelBow;
+            menuNextLevelUpgradeCost = menuLevelBow * 15;
+        }
+            
+        else if (menuSelectedWeapon.StartsWith("SPEAR"))
+        {
+            menuSelectedWeapon = "SPEAR, LEVEL " + menuLevelSpear;
+            menuNextLevelUpgradeCost = menuLevelSpear * 15;
+        }
+
+        MenuSelectedWeaponText.text = menuSelectedWeapon;
+        MenuUpgradeButtonText.text = $"Upgrade for {menuNextLevelUpgradeCost} coins";
+    }
+
+    public void MenuWeaponSetBow()
+    {
+        menuSelectedWeapon = "BOW";
+        MenuSelectBowImage.color = new Color(1, 1, 1);
+        MenuSelectSpearImage.color = new Color(0.5f, 0.5f, 0.5f);
+        MenuPrepare();
+    }
+
+    public void MenuWeaponSetSpear()
+    {
+        menuSelectedWeapon = "SPEAR";
+        MenuSelectBowImage.color = new Color(0.5f, 0.5f, 0.5f);
+        MenuSelectSpearImage.color = new Color(1, 1, 1);
+        MenuPrepare();
+    }
+
+    public void MenuWeaponUpgrade()
+    {
+        if ((menuSelectedWeapon.StartsWith("BOW") || menuSelectedWeapon.StartsWith("SPEAR")) && menuCoins >= menuNextLevelUpgradeCost)
+        {
+            if (menuSelectedWeapon.StartsWith("BOW"))
+                menuLevelBow += 1;
+            else if (menuSelectedWeapon.StartsWith("SPEAR"))
+                menuLevelSpear += 1;
+            SaveManager.Save(-menuNextLevelUpgradeCost, menuLevelBow, menuLevelSpear);
+            MenuPrepare();
+        }
     }
 
     public void MenuStartGame()
     {
-        MenuGameObject.SetActive(false);
-        Player.SetActive(true);
-        StartGame();
+        if (menuSelectedWeapon.StartsWith("BOW") || menuSelectedWeapon.StartsWith("SPEAR"))
+        {
+            MenuGameObject.SetActive(false);
+            Player.SetActive(true);
+            if (menuSelectedWeapon.StartsWith("BOW"))
+            {
+                WeaponBow.gameObject.GetComponent<WeaponBow>().Damage += menuLevelBow * 0.5f;
+                WeaponBow.gameObject.GetComponent<WeaponBow>().SetLevel(menuLevelBow);
+                GameObject w = Instantiate(WeaponBow, Player.transform);
+            }
+            else if (menuSelectedWeapon.StartsWith("SPEAR"))
+            {
+                WeaponSpear.gameObject.GetComponent<WeaponSpear>().Damage += menuLevelBow * 0.5f;
+                WeaponSpear.gameObject.GetComponent<WeaponSpear>().SetLevel(menuLevelBow);
+                GameObject w = Instantiate(WeaponSpear, Player.transform);
+            }
+
+            GameStarted = true;
+        }
     }
 
     public void MenuQuitGame()
@@ -98,14 +199,6 @@ public class GameManager : MonoBehaviour
     public void MenuRestart()
     {
         Application.LoadLevel(Application.loadedLevel);
-    }
-
-    void StartGame()
-    {
-        GenerateSticks();
-        GenerateStones();
-        GenerateApples();
-        GenerateWave();
     }
 
     void GenerateWave()

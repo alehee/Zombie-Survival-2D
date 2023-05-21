@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class WeaponSpear : Weapon
 {
-    [SerializeField]
-    float Damage = 5;
+    public float Damage = 3;
 
     GameObject playerGameObject;
 
@@ -16,22 +15,19 @@ public class WeaponSpear : Weapon
         Weapon.Start();
         weaponGameObject = gameObject;
         playerGameObject = gameObject.transform.parent.gameObject;
-        
-        // Testing purposes only
-        _LevelMax();
     }
 
     void Update()
     {
         Weapon.Update();
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (UseUltimate())
-            {
-                Ultimate();
-            }
-        }
+        if (Input.GetMouseButtonDown(1) && UseUltimate())
+            Ultimate();
+    }
+
+    public void SetLevel(int l)
+    {
+        level = l;
     }
 
     protected override void Ultimate()
