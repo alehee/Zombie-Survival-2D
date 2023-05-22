@@ -135,7 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 8679334694800404746, guid: 03785aceccbc4b24ea866acbfd5c4668, type: 3}
   firePoint: {fileID: 5947528434650417787}
-  firePointsUlt: []
+  firePointsUlt:
+  - {fileID: 6585860500135460240}
+  - {fileID: 4866548765339228119}
   fireForce: 30
   Damage: 3
 --- !u!1 &1410663682825171396
