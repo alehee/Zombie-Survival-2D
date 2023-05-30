@@ -10,11 +10,14 @@ public class WeaponSpear : Weapon
 
     List<string> tagsToIgnore = new List<string> { "Player", "Bullet" };
 
+    PlayerStatus playerStatus;
+
     void Start()
     {
         Weapon.Start();
         weaponGameObject = gameObject;
         playerGameObject = gameObject.transform.parent.gameObject;
+        playerStatus = playerGameObject.GetComponent<PlayerStatus>();
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class WeaponSpear : Weapon
     protected override void Ultimate()
     {
         var position = GetMousePoint();
-        playerGameObject.transform.position = position;
+        playerGameObject.transform.position = new Vector3(position.x, position.y, -1f);
         Debug.Log("Used ultimate!");
     }
 
@@ -47,6 +50,7 @@ public class WeaponSpear : Weapon
         if (collision.gameObject.TryGetComponent<Status>(out Status status))
         {
             status.TakeDamage(Damage);
+            playerStatus.GainHealth(1);
             Debug.Log($"Damage dealt to {collision.gameObject.name}: {Damage}");
         }
     }

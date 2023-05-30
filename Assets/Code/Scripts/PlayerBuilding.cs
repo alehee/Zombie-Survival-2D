@@ -34,7 +34,7 @@ public class PlayerBuilding : MonoBehaviour
                 status.SetStones(status.GetStones() - 5);
                 // Oblicz pozycję, w której ma zostać postawiony obiekt
                 Vector3 spawnPosition = playerTransform.position + playerTransform.forward * buildingDistance;
-                spawnPosition.z = 0;
+                spawnPosition.z = -1;
 
                 // Stwórz obiekt "building" w pozycji spawnPosition
                 GameObject building = Instantiate(towerPrefab, spawnPosition, Quaternion.identity);
@@ -56,8 +56,7 @@ public class PlayerBuilding : MonoBehaviour
                 status.SetSticks(status.GetSticks() - 2);
 
                 Vector3 spawnPosition = playerTransform.position + playerTransform.forward * buildingDistance;
-                spawnPosition.z = 0;
-
+                spawnPosition.z = -1;
 
                 GameObject wall = Instantiate(wallPrefab, spawnPosition, Quaternion.identity);
                 status.UpdateSticksCounter();
