@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZombieNormal: {fileID: 6636740088407850746, guid: 92ee24366078a6947a24b338811fadc9, type: 3}
+  ZombieFast: {fileID: 6636740088407850746, guid: 7b9d33045ca7ce540b8f87b37291af36, type: 3}
+  ZombieTank: {fileID: 6636740088407850746, guid: 994d142ab7678134dbb9363122d7d1c6, type: 3}
   WaveDelay: 10
   WaveZombiesMultiplyer: 1.2
   StickPrefab: {fileID: 3792505038530083843, guid: ab1efc37a6786e4488232db2bb8b2d77, type: 3}

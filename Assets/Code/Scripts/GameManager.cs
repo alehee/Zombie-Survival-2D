@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     GameObject ZombieNormal;
+    [SerializeField]
+    GameObject ZombieFast;
+    [SerializeField]
+    GameObject ZombieTank;
 
     [SerializeField]
     int WaveDelay = 10; // seconds
@@ -104,7 +108,7 @@ public class GameManager : MonoBehaviour
                 TimerAmount.text = "Czas: " + SecondsElapsed.ToString();
                 Debug.Log($"Timer elapsed: {SecondsElapsed}");
 
-                if (WaveLastStarted + WaveDelay <= SecondsElapsed)
+                if (WaveNumber == 0 || WaveLastStarted + WaveDelay <= SecondsElapsed)
                 {
                     GenerateWave();
                     GenerateSticks();
@@ -182,8 +186,8 @@ public class GameManager : MonoBehaviour
             }
             else if (menuSelectedWeapon.StartsWith("SPEAR"))
             {
-                WeaponSpear.gameObject.GetComponent<WeaponSpear>().Damage += menuLevelBow * 0.5f;
-                WeaponSpear.gameObject.GetComponent<WeaponSpear>().SetLevel(menuLevelBow);
+                WeaponSpear.gameObject.GetComponent<WeaponSpear>().Damage += menuLevelSpear * 0.5f;
+                WeaponSpear.gameObject.GetComponent<WeaponSpear>().SetLevel(menuLevelSpear);
                 GameObject w = Instantiate(WeaponSpear, Player.transform);
             }
 
@@ -221,7 +225,14 @@ public class GameManager : MonoBehaviour
             int spawnPointNb = Random.Range(0, SpawnPoints.Length);
             Transform zombieSpawnTransform = SpawnPoints[spawnPointNb].transform;
             zombieSpawnTransform.position += new Vector3(i/5, i/5);
-            Instantiate(ZombieNormal, zombieSpawnTransform);
+
+            float randomNumber = Random.Range(0f, 1f);
+            if(randomNumber <= 0.6 )
+                Instantiate(ZombieNormal, zombieSpawnTransform);
+            else if(randomNumber <= 0.87)
+                Instantiate(ZombieFast, zombieSpawnTransform);
+            else
+                Instantiate(ZombieTank, zombieSpawnTransform);
         }
     }
 
