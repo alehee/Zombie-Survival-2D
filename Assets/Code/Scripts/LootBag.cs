@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class LootBag : MonoBehaviour
 {
-    
     public GameObject droppedItemPrefab;
     public List<Loot> lootList = new List<Loot>();
-
+    public int lootMultiplyer = 1;
 
     List<Loot> GetDroppedItems()
     {
@@ -15,9 +14,10 @@ public class LootBag : MonoBehaviour
         List<Loot> possibleItems = new List<Loot>();
         foreach (Loot item in lootList)
         {
-            if(randomNumber <= item.dropChance)
+            if(randomNumber <= (item.dropChance * lootMultiplyer))
             {
-                possibleItems.Add(item);
+                for(int i = 0; i < lootMultiplyer; i++)
+                    possibleItems.Add(item);
             }
         }
         if (possibleItems.Count > 0) 
