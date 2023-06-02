@@ -12,7 +12,7 @@ public class WeaponBow : Weapon
     List<Transform> firePointsUlt;
     [SerializeField]
     float fireForce;
-
+    AudioSource audioSource;
     float drawTime = 0;
 
     public double Damage = 3;
@@ -21,6 +21,7 @@ public class WeaponBow : Weapon
     {
         Weapon.Start();
         weaponGameObject = gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -28,7 +29,10 @@ public class WeaponBow : Weapon
         Weapon.Update();
 
         if (Input.GetMouseButtonDown(1) && UseUltimate())
+        {
             Ultimate();
+            audioSource.Play();
+        }
         else if (Input.GetMouseButton(0))
         {
             drawTime += Time.deltaTime;
@@ -39,6 +43,7 @@ public class WeaponBow : Weapon
                 drawTime = 1;
 
             Shoot(fireForce * drawTime, firePoint);
+            audioSource.Play();
 
             drawTime = 0;
         }
