@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     GameObject PlayerModel;
     Animator PlayerAnimator;
     SpriteRenderer SpriteRenderer;
+    AudioSource sound1;
+    AudioSource sound2;
 
     float lastMoveVertical = 0;
 
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         status = GetComponent<PlayerStatus>();
         PlayerAnimator = PlayerModel.GetComponent<Animator>();
         SpriteRenderer = PlayerModel.GetComponent<SpriteRenderer>();
+        sound1 = GetComponent<AudioSource>();
+        sound2 = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -66,11 +70,13 @@ public class PlayerMovement : MonoBehaviour
         if (collider.gameObject.CompareTag("Exp"))
         {
             status.AddExp();
+            sound1.Play();
             Destroy(collider.gameObject);
         }
         if (collider.gameObject.CompareTag("Coin"))
         {
             status.AddCoin();
+            sound2.Play();
             Destroy(collider.gameObject);
         }
     }
