@@ -25,7 +25,7 @@ public class Status : MonoBehaviour
             {
                 GetComponent<LootBag>().InstantiateLoot(transform.position);
             }
-
+            SoundManagerScript.PlaySound ("zombie_death");
             Destroy(gameObject);
             Debug.Log($"Object {gameObject.name} destroyed due to health below 0");
         }

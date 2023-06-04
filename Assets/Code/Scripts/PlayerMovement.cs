@@ -52,12 +52,15 @@ public class PlayerMovement : MonoBehaviour
             switch (collider.gameObject.name)
             {
                 case "Stick(Clone)":
+                    SoundManagerScript.PlaySound ("wood");
                     status.AddStick();
                     break;
                 case "Stone(Clone)":
+                    SoundManagerScript.PlaySound ("stone");
                     status.AddStone();
                     break;
                 case "Apple(Clone)":
+                    SoundManagerScript.PlaySound ("apple");
                     status.GainHealth(1);
                     break;
             }
@@ -66,11 +69,13 @@ public class PlayerMovement : MonoBehaviour
         if (collider.gameObject.CompareTag("Exp"))
         {
             status.AddExp();
+            SoundManagerScript.PlaySound ("exp_coin");
             Destroy(collider.gameObject);
         }
         if (collider.gameObject.CompareTag("Coin"))
         {
             status.AddCoin();
+            SoundManagerScript.PlaySound ("coin");
             Destroy(collider.gameObject);
         }
     }
