@@ -6,7 +6,8 @@ public class SoundManagerScript : MonoBehaviour
 {
     
     public static AudioClip buildSound, buttonSound, buttonClickSound, coinSound, insufficientSound, lvlUpSound, 
-        loseSound, stepSound, teleportSound, turretShootSound, zombieSound, zombieAttackSound, zombieDeathSound;
+        loseSound, stepSound, teleportSound, turretShootSound, zombieSound, zombieAttackSound, zombieDeathSound,
+        exp_coinSound, appleSound, stoneSound, woodSound;
     static AudioSource audioSrc;
 
     void Start()
@@ -24,6 +25,10 @@ public class SoundManagerScript : MonoBehaviour
         zombieSound = Resources.Load<AudioClip>("Sound/zombie");
         zombieAttackSound = Resources.Load<AudioClip>("Sound/zombie_attack");
         zombieDeathSound = Resources.Load<AudioClip>("Sound/zombie_death");
+        exp_coinSound = Resources.Load<AudioClip>("Sound/exp_coin");
+        appleSound = Resources.Load<AudioClip>("Sound/apple");
+        stoneSound = Resources.Load<AudioClip>("Sound/stone");
+        woodSound = Resources.Load<AudioClip>("Sound/wood");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -70,6 +75,18 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "zombie_death":
                 audioSrc.PlayOneShot(zombieDeathSound);
+                break;
+            case "exp_coin":
+                audioSrc.PlayOneShot(exp_coinSound);
+                break;
+            case "apple":
+                audioSrc.PlayOneShot(appleSound);
+                break;
+            case "stone":
+                audioSrc.PlayOneShot(stoneSound);
+                break;
+            case "wood":
+                audioSrc.PlayOneShot(woodSound);
                 break;
             default:
                 Debug.Log("Sound clip not found: " + clip);

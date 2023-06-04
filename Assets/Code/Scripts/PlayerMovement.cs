@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     GameObject PlayerModel;
     Animator PlayerAnimator;
     SpriteRenderer SpriteRenderer;
-    AudioSource sound1;
 
     float lastMoveVertical = 0;
 
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
         status = GetComponent<PlayerStatus>();
         PlayerAnimator = PlayerModel.GetComponent<Animator>();
         SpriteRenderer = PlayerModel.GetComponent<SpriteRenderer>();
-        sound1 = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -54,15 +52,15 @@ public class PlayerMovement : MonoBehaviour
             switch (collider.gameObject.name)
             {
                 case "Stick(Clone)":
-                    sound1.Play();
+                    SoundManagerScript.PlaySound ("wood");
                     status.AddStick();
                     break;
                 case "Stone(Clone)":
-                    sound1.Play();
+                    SoundManagerScript.PlaySound ("stone");
                     status.AddStone();
                     break;
                 case "Apple(Clone)":
-                    sound1.Play();
+                    SoundManagerScript.PlaySound ("apple");
                     status.GainHealth(1);
                     break;
             }
@@ -71,13 +69,13 @@ public class PlayerMovement : MonoBehaviour
         if (collider.gameObject.CompareTag("Exp"))
         {
             status.AddExp();
-            sound1.Play();
+            SoundManagerScript.PlaySound ("exp_coin");
             Destroy(collider.gameObject);
         }
         if (collider.gameObject.CompareTag("Coin"))
         {
             status.AddCoin();
-            sound1.Play();
+            SoundManagerScript.PlaySound ("coin");
             Destroy(collider.gameObject);
         }
     }
