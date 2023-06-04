@@ -12,6 +12,7 @@ public class ZombieDamage : MonoBehaviour
         if (collision.gameObject.TryGetComponent<PlayerStatus>(out PlayerStatus playerStatus))
         {
             playerStatus.TakeDamage(Damage);
+            SoundManagerScript.PlaySound ("zombie_attack");
             Debug.Log($"Damage dealt to player: {Damage}");
         }
 

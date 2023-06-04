@@ -41,10 +41,12 @@ public class PlayerBuilding : MonoBehaviour
                 status.UpdateSticksCounter();
                 // Ustaw rotację obiektu "building" zgodnie z rotacją gracza
                 building.transform.rotation = playerTransform.rotation;
+                SoundManagerScript.PlaySound ("build");
                 Debug.Log($"Tower successfully placed!");
             }
             else
             {
+                SoundManagerScript.PlaySound ("button");
                 Debug.Log($"Tower cannot be placed, insufficient amount of sticks!");
             }
         }
@@ -62,10 +64,12 @@ public class PlayerBuilding : MonoBehaviour
                 status.UpdateSticksCounter();
 
                 wall.transform.rotation = playerTransform.rotation;
+                SoundManagerScript.PlaySound ("build");
                 Debug.Log($"Wall successfully placed!");
             }
             else
             {
+                SoundManagerScript.PlaySound ("button");
                 Debug.Log($"Wall cannot be placed, insufficient amount of sticks!");
             }
         }
@@ -83,10 +87,12 @@ public class PlayerBuilding : MonoBehaviour
                 status.UpdateSticksCounter();
 
                 lowerWall.transform.rotation = playerTransform.rotation;
+                SoundManagerScript.PlaySound ("build");
                 Debug.Log($"Lower wall successfully placed!");
             }
             else
             {
+                SoundManagerScript.PlaySound ("button");
                 Debug.Log($"Lower wall cannot be placed, insufficient amount of sticks!");
             }
         }

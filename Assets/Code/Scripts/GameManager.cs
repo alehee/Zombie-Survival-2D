@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
 
     public void MenuWeaponSetBow()
     {
+        SoundManagerScript.PlaySound ("insufficient_materials");
         menuSelectedWeapon = "BOW";
         MenuSelectBowImage.color = new Color(1, 1, 1);
         MenuSelectSpearImage.color = new Color(0.5f, 0.5f, 0.5f);
@@ -153,6 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void MenuWeaponSetSpear()
     {
+        SoundManagerScript.PlaySound ("insufficient_materials");
         menuSelectedWeapon = "SPEAR";
         MenuSelectBowImage.color = new Color(0.5f, 0.5f, 0.5f);
         MenuSelectSpearImage.color = new Color(1, 1, 1);
@@ -169,6 +171,7 @@ public class GameManager : MonoBehaviour
                 menuLevelSpear += 1;
             SaveManager.Save(-menuNextLevelUpgradeCost, menuLevelBow, menuLevelSpear);
             MenuPrepare();
+            SoundManagerScript.PlaySound ("insufficient_materials");
         }
     }
 
@@ -190,7 +193,7 @@ public class GameManager : MonoBehaviour
                 WeaponSpear.gameObject.GetComponent<WeaponSpear>().SetLevel(menuLevelSpear);
                 GameObject w = Instantiate(WeaponSpear, Player.transform);
             }
-
+            SoundManagerScript.PlaySound ("insufficient_materials");
             GameStarted = true;
         }
     }
