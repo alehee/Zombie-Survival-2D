@@ -59,6 +59,7 @@ public class BuildingShooting : MonoBehaviour
                 // jeśli znaleziono firePoint z którego można strzelać i minął czas od ostatniego strzału, strzelaj
                 if (nearestFirePoint != null && Time.time - lastFireTime > fireRate)
                 {
+                    SoundManagerScript.PlaySound ("turret_shoot");
                     ShootAtEnemy(hitCollider.gameObject, nearestFirePoint);
                     lastFireTime = Time.time;
                 }
