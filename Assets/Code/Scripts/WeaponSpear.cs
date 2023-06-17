@@ -37,6 +37,7 @@ public class WeaponSpear : Weapon
     {
         var position = GetMousePoint();
         playerGameObject.transform.position = new Vector3(position.x, position.y, -1f);
+        SoundManagerScript.PlaySound ("teleport");
         Debug.Log("Used ultimate!");
     }
 

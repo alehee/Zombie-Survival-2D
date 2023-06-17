@@ -27,10 +27,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             PlayerAnimator.speed = 1;
+            if (!SoundManagerScript.audioSrc.isPlaying)
+            {
+                SoundManagerScript.PlaySound ("step");
+            }
+            else
+            {
+                SoundManagerScript.StopMusic();
+            }
         }
         else
         {
