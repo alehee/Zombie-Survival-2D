@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject ApplePrefab;
     [SerializeField]
-    int PickupableNums = 10;
-    Vector2 SpawnBounds = new Vector2(10, 10);
+    int PickupableNums = 7;
+    Vector2 SpawnBounds = new Vector2(30, 30);
     GameObject[] SpawnPoints;
     [SerializeField]
     Text TimerAmount;
@@ -241,6 +241,7 @@ public class GameManager : MonoBehaviour
 
     void GenerateSticks()
     {
+        Vector3 playerPosition = Player.transform.position;
         for (int i = 0; i < PickupableNums; i++)
         {
             // Losowo wybierz prefab do wygenerowania
@@ -249,7 +250,7 @@ public class GameManager : MonoBehaviour
             // Losowo wygeneruj pozycj� w obr�bie granic spawnu
             float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
             float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
-            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+            Vector3 spawnPosition = new Vector3(playerPosition.x + randomX, playerPosition.y + randomY, 0);
 
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
@@ -258,6 +259,7 @@ public class GameManager : MonoBehaviour
 
     void GenerateStones()
     {
+        Vector3 playerPosition = Player.transform.position;
         for (int i = 0; i < PickupableNums; i++)
         {
             // Losowo wybierz prefab do wygenerowania
@@ -266,7 +268,7 @@ public class GameManager : MonoBehaviour
             // Losowo wygeneruj pozycj� w obr�bie granic spawnu
             float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
             float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
-            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+            Vector3 spawnPosition = new Vector3(playerPosition.x + randomX, playerPosition.y + randomY, 0);
 
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
@@ -275,6 +277,7 @@ public class GameManager : MonoBehaviour
 
     void GenerateApples()
     {
+        Vector3 playerPosition = Player.transform.position;
         for (int i = 0; i < PickupableNums; i++)
         {
             // Losowo wybierz prefab do wygenerowania
@@ -283,7 +286,7 @@ public class GameManager : MonoBehaviour
             // Losowo wygeneruj pozycj� w obr�bie granic spawnu
             float randomX = Random.Range(-SpawnBounds.x, SpawnBounds.x);
             float randomY = Random.Range(-SpawnBounds.y, SpawnBounds.y);
-            Vector3 spawnPosition = new Vector3(randomX, randomY, 0);
+            Vector3 spawnPosition = new Vector3(playerPosition.x + randomX, playerPosition.y + randomY, 0);
 
             // Wygeneruj obiekt
             Instantiate(objectPrefab, spawnPosition, Quaternion.identity);

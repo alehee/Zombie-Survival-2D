@@ -52,7 +52,7 @@ MonoBehaviour:
   StickPrefab: {fileID: 3792505038530083843, guid: ab1efc37a6786e4488232db2bb8b2d77, type: 3}
   StonePrefab: {fileID: 2591680665395659052, guid: 7ec5ad78cc943bd48b6d27bcc0e8eafb, type: 3}
   ApplePrefab: {fileID: 9175527796426865659, guid: 60250c2c5c92f814bb22886698ef0870, type: 3}
-  PickupableNums: 10
+  PickupableNums: 7
   TimerAmount: {fileID: 0}
   Player: {fileID: 6358303019509735749, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
   WeaponBow: {fileID: 1150457479705238215, guid: ae5db5f21d978df4a9f0b4c13b2bde03, type: 3}
