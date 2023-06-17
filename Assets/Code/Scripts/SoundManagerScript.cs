@@ -8,7 +8,7 @@ public class SoundManagerScript : MonoBehaviour
     public static AudioClip buildSound, buttonSound, buttonClickSound, coinSound, insufficientSound, lvlUpSound, 
         loseSound, stepSound, teleportSound, turretShootSound, zombieSound, zombieAttackSound, zombieDeathSound,
         exp_coinSound, appleSound, stoneSound, woodSound, backgroundSound;
-    static AudioSource audioSrc;
+    public static AudioSource audioSrc;
 
     void Start()
     {
@@ -95,5 +95,9 @@ public class SoundManagerScript : MonoBehaviour
                 Debug.Log("Sound clip not found: " + clip);
                 break;
         }
+    }
+    public static void StopMusic()
+    {
+        audioSrc.Stop();
     }
 }
