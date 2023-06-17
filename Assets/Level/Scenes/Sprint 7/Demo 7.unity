@@ -554,6 +554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7562d324568ae61428b64b67370ee8a3, type: 3}
+--- !u!60 &83795227 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4856156277417376592, guid: 7562d324568ae61428b64b67370ee8a3, type: 3}
+  m_PrefabInstance: {fileID: 83795226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &89036040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1735,6 +1740,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca254adb16e23e349b85a652b9292a8f, type: 3}
+--- !u!1 &529860853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8195970104389547518, guid: ca254adb16e23e349b85a652b9292a8f, type: 3}
+  m_PrefabInstance: {fileID: 529860852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &533825288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1941,12 +1951,108 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8195970104389547516, guid: ca254adb16e23e349b85a652b9292a8f, type: 3}
   m_PrefabInstance: {fileID: 529860852}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 529860853}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c094dcaa7caa8b4cb03f8ec9294ea1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &562941459
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529860853}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: aa1146c4bb93b9940b8a5405a0be95ba, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.075
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &608687805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6492549022925225368, guid: b77cf4b65dd939642aa0ebdf127c9bb3, type: 3}
@@ -3221,6 +3327,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027281002, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 83795227}
     - target: {fileID: 1396658450795311625, guid: 0f8dc97984d5ce9468b3147d7bbd5a91, type: 3}
       propertyPath: wallPrefab
       value: 
