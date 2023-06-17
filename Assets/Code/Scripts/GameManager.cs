@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
         MenuSelectBowImage = MenuSelectBowGameObject.gameObject.gameObject.GetComponent<Image>();
         MenuSelectSpearImage = MenuSelectSpearGameObject.gameObject.GetComponent<Image>();
         MenuPrepare();
+        
     }
 
     void Update()
@@ -293,7 +294,7 @@ public class GameManager : MonoBehaviour
     public void SetGameOver(Transform position, int coins, int experience, int level)
     {
         GameOverCamera.transform.position = position.position;
-
+        SoundManagerScript.PlaySound ("lose");
         Debug.Log($"Game Over! Resources at the end: {coins} coins, {experience} experience, {level} level, {SecondsElapsed} time");
 
         GameObject ui = GameOverCamera.transform.Find("Canvas").gameObject;

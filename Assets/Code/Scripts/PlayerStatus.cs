@@ -56,6 +56,7 @@ public class PlayerStatus : Status
 
     private void OnDestroy()
     {
+        SoundManagerScript.PlaySound ("lose");
         GameManager.SetGameOver(this.transform, Resources["Coins"], TotalExperience, Level);
     }
 
@@ -89,6 +90,7 @@ public class PlayerStatus : Status
         UpdateExperienceCounter();
         if (Resources["Exp"] >= (5 + NextLevelExperienceMultiplyer*Level))
         {
+            SoundManagerScript.PlaySound ("level_up");
             NextLevel();
             Debug.Log($"Level up! Current level: {Level}");
         }
